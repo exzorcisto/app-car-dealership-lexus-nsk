@@ -1,0 +1,13 @@
+.cstmBtn {
+    margin-top: 20px;
+    padding: 20px 15px;
+    align-items: center;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.cstmBtn .cstmBtn-style-1 {
+    background-color: #222;
+}

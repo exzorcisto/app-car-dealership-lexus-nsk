@@ -36,16 +36,10 @@ main .container-greetings .text-greetings{
 
 }
 
-main .container-greetings button {
-    margin-top: 20px;
-    padding: 20px 15px;
-    align-items: center;
-    border: none;
-    border-radius: 5px;
-    font-size: 18px;
-    font-weight: 500;
-}
-
 main .CgArrowLongRight {
     height: 15px;
+}
+
+main .container-greetings-2 {
+    padding: 0;
 }
