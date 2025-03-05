@@ -1,0 +1,70 @@
+footer {
+    background-color: #E2E8EF;
+    padding: 40px 80px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    font-size: 18px;
+    font-weight: 400;
+}
+
+footer .map-nav {
+    padding: 0 50px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+footer img {
+    width: 150px;
+    height: 28px;
+    object-fit: cover;
+    cursor: pointer;
+}
+
+footer .map-up {
+    align-items: center;
+    width: auto;
+    display: flex;
+    justify-content: space-between;
+    list-style: none;
+}
+
+footer .map-up li {
+    align-items: center;
+    display: inline-block;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+footer .map-up li a {
+    text-decoration: none;
+    color: var(--primary-color-text);
+    transition: all 0.3s ease;
+}
+
+footer .map-up-nav {
+    display: flex;
+    gap: 30px;
+}
+
+footer .map-mid {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    list-style: none;
+    padding: 0 50px;
+}
+
+footer .map-mid li a {
+    text-decoration: none;
+    color: var(--primary-color-text);
+    transition: all 0.3s ease;
+}
+
+footer .map-mid li a:hover {
+    text-decoration: none;
+    color: var(--primary-color-text-hover);
+    transition: all 0.3s ease;
+}
