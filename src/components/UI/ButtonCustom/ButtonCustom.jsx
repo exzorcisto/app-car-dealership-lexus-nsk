@@ -3,7 +3,7 @@ import './ButtonCustom.css'
 
 function ButtonCustom(props) {
   return <>
-      <button {...props} className='cstmBtn'>
+      <button {...props} className={'btn-custom ' + (props.className ?? '')}>
           {props.children}
       </button>
   </>
