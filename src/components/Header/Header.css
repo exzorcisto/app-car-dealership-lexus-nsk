@@ -32,6 +32,7 @@ header .nav-up li {
     margin: 0 10px;
     cursor: pointer;
     text-decoration: none;
+    transition: all 0.3s ease;
 }
 
 header .nav-menu {
@@ -42,7 +43,7 @@ header .nav-menu {
     align-items: center;
     font-weight: 300;
     list-style: none;
-    background-color: var(--second-color);
+    background-color: var(--secondary-color);
 }
 
 header .nav-menu li {
@@ -53,7 +54,16 @@ header .nav-menu li {
 
 header .nav-menu li a {
     text-decoration: none;
-    color: var(--primary-color-text)
+    color: var(--primary-color-text);
+    transition: all 0.3s ease;
+}
+
+header .nav-menu li a:hover {
+    text-decoration: none;
+    font-weight: 400;
+    color: var(--primary-color-text-hover);
+    border-bottom: 1px solid var(--primary-color-text-hover);
+    transition: all 0.3s ease;
 }
 
 header .FaAngleDown {

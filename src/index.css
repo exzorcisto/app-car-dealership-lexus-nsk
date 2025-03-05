@@ -3,7 +3,9 @@
 :root {
   --primary-color-text: #222;
   --primary-color-text-hover: #2d4b6a;
-  --second-color: #E2E8EF;
+  --primary-secondary-color: #2d4b6a;
+  --primary-secondary-color-hover: #45729f;
+  --secondary-color: #E2E8EF;
 }
 
 * {

@@ -14,15 +14,15 @@ export default function Main() {
                 </div>
             </div>
             <div className='container-greetings-2'>
-            <span className='text-greeting-2'>
-                Рады видеть вас в Лексус - Новосибирск – официальном дилерском центре легендарной марки Lexus в <br/>
-                Новосибирске. Оцените настоящее японское качество стандартов продажи и обслуживания ООО «Тойота Мотор»!
-            </span>
+                <span className='text-greeting-2'>
+                    Рады видеть вас в Лексус - Новосибирск – официальном дилерском центре легендарной марки Lexus в <br/>
+                    Новосибирске. Оцените настоящее японское качество стандартов продажи и обслуживания ООО «Тойота Мотор»!
+                </span>
                 <div className='block-buttons'>
-                    <ButtonCustom onClick={() => console.log('clicking')}>АВТОМОБИЛИ В
-                        НАЛИЧИИ</ButtonCustom>
-                    <ButtonCustom className='btn-style-1' onClick={() => console.log('clicking')}>ЗАПИСАТЬСЯ НА
-                        ТО</ButtonCustom>
+                    <ButtonCustom className='btn-style-1' onClick={() => console.log('clicking')}>АВТОМОБИЛИ В
+                        НАЛИЧИИ <CgArrowLongRight className='CgArrowLongRight'/></ButtonCustom>
+                    <ButtonCustom className='btn-style-2' onClick={() => console.log('clicking')}>ЗАПИСАТЬСЯ НА
+                        ТО <CgArrowLongRight className='CgArrowLongRight'/></ButtonCustom>
                 </div>
             </div>
         </main>
