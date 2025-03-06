@@ -1,6 +1,7 @@
+import React from "react";
 import Footer from "./components/Footer/Footer";
 import Header from "./components/Header/Header";
-import Main from "./components/Home page/Main/Main";
+import Main from "./components/Pages/Home page/Main/Main";
 import './index.css';
 
 function App() {
