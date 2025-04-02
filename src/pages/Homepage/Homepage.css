@@ -3,7 +3,7 @@ main {
 }
 
 main .container-greetings {
-    background-image: url('../../img/hp-bg.webp');
+    background-image: url('../../components/img/hp-bg.webp');
     background-size: cover;
     background-position: center;
     background-blend-mode: multiply;

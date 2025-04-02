@@ -1,9 +1,10 @@
 import React from 'react'
-import './Main.css'
+import './Homepage.css'
 import {CgArrowLongRight} from "react-icons/cg";
-import ButtonCustom from '../../UI/ButtonCustom/ButtonCustom';
+import ButtonCustom from '../../components/UI/ButtonCustom/ButtonCustom';
 
-export default function Main() {
+
+export default function Homepage() {
     return (
         <main>
             <div className="container-greetings">
