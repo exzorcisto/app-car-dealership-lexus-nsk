@@ -1,0 +1,18 @@
+.nav-bar {
+    width: 100%;
+    padding: 3px 40px;
+    background-color: rgb(255, 255, 255);
+    color: #494D57;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.nav-bar a {
+    text-decoration: none;
+    color: #494D57;
+    transition: all 0.3s ease;
+}
+
+.nav-bar a:hover {
+    color:black;
+}

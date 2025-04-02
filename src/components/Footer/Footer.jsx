@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 import './Footer.css';
 import logo from '../../img/logo.png';
 
@@ -15,10 +16,10 @@ export default function Footer() {
             </ul>
           </ul>
           <ul className='map-mid'>
-            <li><a href='#'>Модельный ряд</a></li>
-            <li><a href='#'>Автомобили в наличии</a></li>
-            <li><a href='#'>Мир Lexus</a></li>
-            <li><a href='#'>Контакты</a></li>
+            <li><Link to='/modelrange'>Модельный ряд</Link></li>
+            <li><Link to='/availablecars'>Автомобили в наличии</Link></li>
+            <li><Link to='/lexusworld'>Мир Lexus</Link></li>
+            <li><Link to='/contacts'>Контакты</Link></li>
           </ul>
           <div>
             Вся представленная на сайте информация, касающаяся стоимости автомобилей, 
