@@ -1,5 +1,5 @@
 import React from 'react'
-import './Homepage.css'
+import './Homepage.css';
 import {CgArrowLongRight} from "react-icons/cg";
 import ButtonCustom from '../../components/UI/ButtonCustom/ButtonCustom';
 
