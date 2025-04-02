@@ -18,9 +18,9 @@ export default function Header() {
           </ul>
           <ul className='nav-menu'>
             <li><Link to='/modelrange'>Модельный ряд</Link></li>
-            <li><Link to='/availablecars'>Автомобили в наличии</Link></li> {/* Заменил # на /availablecars */}
-            <li><Link to='/lexusworld'>Мир Lexus</Link></li> {/* Заменил # на /lexusworld */}
-            <li><Link to='/contacts'>Контакты</Link></li> {/* Заменил # на /contacts */}
+            <li><Link to='/availablecars'>Автомобили в наличии</Link></li>
+            <li><Link to='/lexusworld'>Мир Lexus</Link></li>
+            <li><Link to='/contacts'>Контакты</Link></li>
           </ul>
 
     </header>
