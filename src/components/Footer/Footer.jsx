@@ -1,14 +1,13 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
 import './Footer.css';
-import logo from '../../img/logo.png';
 
 export default function Footer() {
   return (
     <footer>
         <div className='map-nav'>
           <ul className='map-up'>
-            <li><img className='logo' src={logo} alt="logo"/></li>
+            <li><img className='logo' src="/assets/img/logo.png" alt="logo"/></li>
             <ul className='map-up-nav'>
               <li><a href='#'>Новосибирск, ул. Большевистская, 276/2</a></li>
               <li><a href='#'>+7 (383) 246-00-00</a></li>

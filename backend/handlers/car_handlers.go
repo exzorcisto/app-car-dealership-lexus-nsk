@@ -6,14 +6,14 @@ import (
 	"net/http"
 	"strconv"
 
-	"backend/db"     // Замените на ваш путь к модулю
-	"backend/models" // Замените на ваш путь к модулю
+	"backend/db"
+	"backend/models"
 
 	"github.com/gorilla/mux"
 )
 
 func GetCars(w http.ResponseWriter, r *http.Request) {
-	rows, err := db.DB.Query("SELECT CarID, ModelID, TrimLevel, Year, VIN, Price, Color, Mileage, IsNew FROM Cars") // Адаптируйте запрос
+	rows, err := db.DB.Query("SELECT carid, trimlevel, year, vin, price, color, bodywork, engine, engine_capacity, fuel, image, description_1, description_2 FROM cars")
 	if err != nil {
 		log.Printf("Error querying cars: %v", err)
 		http.Error(w, "Failed to fetch cars", http.StatusInternalServerError)
@@ -24,7 +24,21 @@ func GetCars(w http.ResponseWriter, r *http.Request) {
 	var cars []models.Car
 	for rows.Next() {
 		var car models.Car
-		if err := rows.Scan(&car.CarID, &car.ModelID, &car.TrimLevel, &car.Year, &car.VIN, &car.Price, &car.Color, &car.Mileage, &car.IsNew); err != nil {
+		if err := rows.Scan(
+			&car.CarID,
+			&car.TrimLevel,
+			&car.Year,
+			&car.VIN,
+			&car.Price,
+			&car.Color,
+			&car.Bodywork,
+			&car.Engine,
+			&car.EngineCapacity,
+			&car.Fuel,
+			&car.Image,
+			&car.Description1,
+			&car.Description2,
+		); err != nil {
 			log.Printf("Error scanning car row: %v", err)
 			http.Error(w, "Failed to process car data", http.StatusInternalServerError)
 			return
@@ -44,15 +58,31 @@ func GetCar(w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
 	carIDStr := vars["id"]
 
-	carID, err := strconv.Atoi(carIDStr) // Convert string ID to integer
+	carID, err := strconv.Atoi(carIDStr)
 	if err != nil {
 		http.Error(w, "Invalid car ID", http.StatusBadRequest)
 		return
 	}
-	row := db.DB.QueryRow("SELECT CarID, ModelID, TrimLevel, Year, VIN, Price, Color, Mileage, IsNew FROM Cars WHERE CarID = $1", carID) // Adapt query
+
+	row := db.DB.QueryRow("SELECT carid, trimlevel, year, vin, price, color, bodywork, engine, engine_capacity, fuel, image, description_1, description_2 FROM cars WHERE carid = $1", carID)
 
 	var car models.Car
-	err = row.Scan(&car.CarID, &car.ModelID, &car.TrimLevel, &car.Year, &car.VIN, &car.Price, &car.Color, &car.Mileage, &car.IsNew)
+	err = row.Scan(
+		&car.CarID,
+		&car.TrimLevel,
+		&car.Year,
+		&car.VIN,
+		&car.Price,
+		&car.Color,
+		&car.Bodywork,
+		&car.Engine,
+		&car.EngineCapacity,
+		&car.Fuel,
+		&car.Image,
+		&car.Description1,
+		&car.Description2,
+	)
+
 	if err != nil {
 		log.Printf("Error scanning car row: %v", err)
 		http.Error(w, "Failed to process car data", http.StatusInternalServerError)
@@ -61,8 +91,8 @@ func GetCar(w http.ResponseWriter, r *http.Request) {
 
 	w.Header().Set("Content-Type", "application/json")
 	if err := json.NewEncoder(w).Encode(car); err != nil {
-		log.Printf("Error encoding cars to JSON: %v", err)
-		http.Error(w, "Failed to encode cars", http.StatusInternalServerError)
+		log.Printf("Error encoding car to JSON: %v", err)
+		http.Error(w, "Failed to encode car", http.StatusInternalServerError)
 		return
 	}
 }
@@ -76,18 +106,31 @@ func CreateCar(w http.ResponseWriter, r *http.Request) {
 	}
 
 	sqlStatement := `
-INSERT INTO Cars (ModelID, TrimLevel, Year, VIN, Price, Color, Mileage, IsNew)
-VALUES ($1, $2, $3, $4, $5, $6, $7, $8)
-RETURNING CarID`
+	INSERT INTO cars (trimlevel, year, vin, price, color, bodywork, engine, engine_capacity, fuel, image, description_1, description_2)
+	VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12)
+	RETURNING carid`
 	id := 0
-	err = db.DB.QueryRow(sqlStatement, car.ModelID, car.TrimLevel, car.Year, car.VIN, car.Price, car.Color, car.Mileage, car.IsNew).Scan(&id)
+	err = db.DB.QueryRow(sqlStatement,
+		car.TrimLevel,
+		car.Year,
+		car.VIN,
+		car.Price,
+		car.Color,
+		car.Bodywork,
+		car.Engine,
+		car.EngineCapacity,
+		car.Fuel,
+		car.Image,
+		car.Description1,
+		car.Description2,
+	).Scan(&id)
 	if err != nil {
 		log.Printf("Error creating car: %v", err)
 		http.Error(w, "Failed to create car", http.StatusInternalServerError)
 		return
 	}
 
-	car.CarID = id // Set the CarID on the car object
+	car.CarID = id
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusCreated)
 	json.NewEncoder(w).Encode(car)

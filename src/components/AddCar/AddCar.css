@@ -1,0 +1,94 @@
+/* frontend/src/pages/AddCar/AddCar.css */
+.add-car-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.add-car-container h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #333;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.form-group select {
+    height: 40px;
+}
+
+.error-message {
+    color: #d32f2f;
+    margin-bottom: 20px;
+    padding: 10px;
+    background-color: #fdecea;
+    border-radius: 4px;
+}
+
+.form-actions button {
+    background-color: #1976d2;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.form-actions button:hover {
+    background-color: #1565c0;
+}
+
+.form-actions button:disabled {
+    background-color: #b0bec5;
+    cursor: not-allowed;
+}
+
+.image-preview {
+    margin-top: 10px;
+}
+
+.image-preview img {
+    max-width: 100%;
+    max-height: 200px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.form-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.cancel-btn {
+    background-color: #f44336;
+}
+
+.cancel-btn:hover {
+    background-color: #d32f2f;
+}
+
+button.submitting {
+    opacity: 0.7;
+    cursor: not-allowed;
+}

@@ -1,39 +1,48 @@
 package main
 
 import (
-	"fmt"
 	"log"
 	"net/http"
 
-	"backend/db"       // Замените на ваш путь к модулю
-	"backend/handlers" // Замените на ваш путь к модулю
+	"backend/db"
+	"backend/handlers"
 
 	"github.com/gorilla/mux"
 	"github.com/rs/cors"
 )
 
 func main() {
+	// Инициализация подключения к базе данных
 	db.InitDB()
 	defer db.DB.Close()
 
+	// Проверка соединения с базой данных
+	err := db.DB.Ping()
+	if err != nil {
+		log.Fatalf("Failed to ping database: %v", err)
+	}
+	log.Println("Successfully connected to database")
+
 	router := mux.NewRouter()
 
-	// Define API endpoints
+	// Маршруты для работы с автомобилями
 	router.HandleFunc("/cars", handlers.GetCars).Methods("GET")
 	router.HandleFunc("/cars/{id}", handlers.GetCar).Methods("GET")
 	router.HandleFunc("/cars", handlers.CreateCar).Methods("POST")
 	// router.HandleFunc("/cars/{id}", handlers.UpdateCar).Methods("PUT")
 	// router.HandleFunc("/cars/{id}", handlers.DeleteCar).Methods("DELETE")
 
-	// CORS configuration
+	// Настройка CORS
 	c := cors.New(cors.Options{
-		AllowedOrigins:   []string{"http://localhost:3000"}, // Allow your React app's origin
+		AllowedOrigins:   []string{"http://localhost:3000"},
 		AllowedMethods:   []string{"GET", "POST", "PUT", "DELETE", "OPTIONS"},
-		AllowedHeaders:   []string{"Content-Type"},
+		AllowedHeaders:   []string{"Content-Type", "Authorization"},
 		AllowCredentials: true,
 	})
 
-	handler := c.Handler(router) // Wrap the router with CORS
-	fmt.Println("Server listening on port 8000")
-	log.Fatal(http.ListenAndServe(":8000", handler)) // Pass handler
+	// Обертка роутера с CORS
+	handler := c.Handler(router)
+
+	log.Println("Server starting on port 8000")
+	log.Fatal(http.ListenAndServe(":8000", handler))
 }
