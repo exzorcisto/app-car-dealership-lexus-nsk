@@ -40,3 +40,19 @@
     color: var(--primary-secondary-color-hover);
     transition: all 0.3s ease;
 }
+
+.btn-custom.btn-style-3 {
+    padding: 15px 10px;
+    border: solid var(--primary-secondary-color);
+    border-width: 1px;
+    color: var(--primary-color-text-hover);
+    background-color: #ffffff;
+    transition: all 0.3s ease;
+}
+
+.btn-custom.btn-style-3:hover {
+    border: solid var(--primary-secondary-color-hover);
+    border-width: 1px;
+    color: var(--primary-secondary-color-hover);
+    transition: all 0.3s ease;
+}

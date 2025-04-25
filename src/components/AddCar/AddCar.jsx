@@ -7,6 +7,7 @@ import './AddCar.css';
 function AddCar() {
     const navigate = useNavigate();
     const [formData, setFormData] = useState({
+        model_name: '', // New field
         trim_level: '',
         year: '',
         vin: '',
@@ -37,7 +38,7 @@ function AddCar() {
         setError('');
     
         // Валидация перед отправкой
-        if (!formData.trim_level || !formData.vin || !formData.price) {
+        if (!formData.model_name || !formData.trim_level || !formData.vin || !formData.price) {
             setError('Заполните все обязательные поля');
             setIsSubmitting(false);
             return;
@@ -48,6 +49,7 @@ function AddCar() {
             let imagePath = formData.image;
     
             const response = await axios.post('http://localhost:8000/cars', {
+                model_name: formData.model_name, // New field
                 trim_level: formData.trim_level,
                 year: parseInt(formData.year) || 2023,
                 vin: formData.vin,
@@ -90,6 +92,24 @@ function AddCar() {
             
             <form onSubmit={handleSubmit}>
                 <div className="form-group">
+                    <label>Модель автомобиля:</label>
+                    <select
+                        name="model_name"
+                        value={formData.model_name}
+                        onChange={handleChange}
+                        required
+                    >
+                        <option value="">Выберите модель</option>
+                        <option value="ES 250">ES 250</option>
+                        <option value="NX 200">NX 200</option>
+                        <option value="RX 350">RX 350</option>
+                        <option value="GX">GX</option>
+                        <option value="LX">LX</option>
+                        <option value="LM">LM</option>
+                    </select>
+                </div>
+
+                <div className="form-group">
                     <label>Комплектация:</label>
                     <select
                         name="trim_level"
@@ -100,6 +120,8 @@ function AddCar() {
                         <option value="">Выберите комплектацию</option>
                         <option value="PROGRESSIVE">PROGRESSIVE</option>
                         <option value="PREMIUM">PREMIUM</option>
+                        <option value="EXECUTIVE">EXECUTIVE</option>
+                        <option value="LUXURY">LUXURY</option>
                     </select>
                 </div>
 
@@ -151,7 +173,7 @@ function AddCar() {
                         required
                     >
                         <option value="">Выберите цвет</option>
-                        <option value="ПЛАТИНОВЫЙ МЕТАЛИК">ПЛАТИНОВЫЙ МЕТАЛИК</option>
+                        <option value="ПЛАТИНОВЫЙ МЕТАЛИК">ПЛАТИНОВЫЙ МЕТАЛЛИК</option>
                         <option value="ЧЕРНЫЙ НЕМЕТАЛЛИК">ЧЕРНЫЙ НЕМЕТАЛЛИК</option>
                     </select>
                 </div>

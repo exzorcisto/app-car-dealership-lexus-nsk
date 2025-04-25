@@ -13,7 +13,7 @@ import (
 )
 
 func GetCars(w http.ResponseWriter, r *http.Request) {
-	rows, err := db.DB.Query("SELECT carid, trimlevel, year, vin, price, color, bodywork, engine, engine_capacity, fuel, image, description_1, description_2 FROM cars")
+	rows, err := db.DB.Query("SELECT carid, model_name, trimlevel, year, vin, price, color, bodywork, engine, engine_capacity, fuel, image, description_1, description_2 FROM cars")
 	if err != nil {
 		log.Printf("Error querying cars: %v", err)
 		http.Error(w, "Failed to fetch cars", http.StatusInternalServerError)
@@ -26,6 +26,7 @@ func GetCars(w http.ResponseWriter, r *http.Request) {
 		var car models.Car
 		if err := rows.Scan(
 			&car.CarID,
+			&car.ModelName, // New field
 			&car.TrimLevel,
 			&car.Year,
 			&car.VIN,
@@ -64,11 +65,12 @@ func GetCar(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	row := db.DB.QueryRow("SELECT carid, trimlevel, year, vin, price, color, bodywork, engine, engine_capacity, fuel, image, description_1, description_2 FROM cars WHERE carid = $1", carID)
+	row := db.DB.QueryRow("SELECT carid, model_name, trimlevel, year, vin, price, color, bodywork, engine, engine_capacity, fuel, image, description_1, description_2 FROM cars WHERE carid = $1", carID)
 
 	var car models.Car
 	err = row.Scan(
 		&car.CarID,
+		&car.ModelName, // New field
 		&car.TrimLevel,
 		&car.Year,
 		&car.VIN,
@@ -106,11 +108,12 @@ func CreateCar(w http.ResponseWriter, r *http.Request) {
 	}
 
 	sqlStatement := `
-	INSERT INTO cars (trimlevel, year, vin, price, color, bodywork, engine, engine_capacity, fuel, image, description_1, description_2)
-	VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12)
+	INSERT INTO cars (model_name, trimlevel, year, vin, price, color, bodywork, engine, engine_capacity, fuel, image, description_1, description_2)
+	VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13)
 	RETURNING carid`
 	id := 0
 	err = db.DB.QueryRow(sqlStatement,
+		car.ModelName, // New field
 		car.TrimLevel,
 		car.Year,
 		car.VIN,

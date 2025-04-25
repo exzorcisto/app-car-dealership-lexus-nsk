@@ -2,6 +2,7 @@ package models
 
 type Car struct {
 	CarID          int     `json:"carid"`
+	ModelName      string  `json:"model_name"`
 	TrimLevel      string  `json:"trim_level"`
 	Year           int     `json:"year"`
 	VIN            string  `json:"vin"`
