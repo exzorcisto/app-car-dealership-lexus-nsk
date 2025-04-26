@@ -259,3 +259,10 @@
     padding: 40px;
     color: #666;
 }
+
+.car-link {
+    display: flex;
+    gap: 25px;
+    text-decoration: none;
+    color: inherit;
+}

@@ -1,0 +1,169 @@
+.car-details-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: "Jost", sans-serif;
+    color: var(--primary-color-text);
+}
+
+/* Шапка с изображением */
+.car-details-container .car-header-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 20px;
+}
+
+.car-details-container .header-content {
+    flex: 1;
+}
+
+.car-details-container .car-header-section h1 {
+    font-size: 28px;
+    font-weight: 500;
+    margin-bottom: 8px;
+}
+
+.car-details-container .availability-date {
+    font-size: 14px;
+    color: var(--primary-color-text-hover);
+}
+
+.car-details-container .price-action-container {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.car-details-container .price-value {
+    font-size: 28px;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+.car-details-container .offer-btn {
+    padding: 12px 24px;
+    background-color: var(--primary-secondary-color);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    white-space: nowrap;
+}
+
+.car-details-container .offer-btn:hover {
+    background-color: var(--primary-secondary-color-hover);
+}
+
+/* Изображение автомобиля */
+.car-details-container .car-image-container {
+    width: 100%;
+    margin-bottom: 30px;
+}
+
+.car-details-container .car-image-container img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Характеристики */
+.car-details-container .specs-section {
+    margin-bottom: 40px;
+}
+
+.car-details-container .specs-section h2 {
+    font-size: 24px;
+    font-weight: 500;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--secondary-color);
+}
+
+.car-details-container .specs-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+}
+
+.car-details-container .spec-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--secondary-color);
+}
+
+.car-details-container .spec-name {
+    font-size: 16px;
+    color: var(--primary-color-text-hover);
+}
+
+.car-details-container .spec-value {
+    font-size: 16px;
+    font-weight: 500;
+}
+
+/* Комплектация */
+.car-details-container .features-section {
+    margin-bottom: 40px;
+}
+
+.car-details-container .features-section h2 {
+    font-size: 24px;
+    font-weight: 500;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--secondary-color);
+}
+
+.car-details-container .features-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+}
+
+.car-details-container .feature-group h3 {
+    font-size: 20px;
+    font-weight: 500;
+    margin-bottom: 15px;
+}
+
+.car-details-container .features-list {
+    list-style-type: none;
+    padding-left: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.car-details-container .features-list li {
+    position: relative;
+    padding-left: 20px;
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+.car-details-container .features-list li:before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: var(--primary-secondary-color);
+    font-size: 20px;
+}
+
+/* Сообщение об ошибке */
+.car-details-container .car-not-found {
+    text-align: center;
+    padding: 60px 20px;
+}
+
+.car-details-container .car-not-found h2 {
+    color: #d32f2f;
+    margin-bottom: 30px;
+    font-size: 24px;
+}

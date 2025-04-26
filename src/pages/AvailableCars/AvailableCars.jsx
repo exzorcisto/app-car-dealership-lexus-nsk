@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useMemo } from 'react';
+import { Link } from 'react-router-dom';
 import './AvailableCars.css';
 import NavBar from '../../components/UI/NavBar/NavBar';
 import axios from 'axios';
@@ -200,7 +201,7 @@ function AvailableCars() {
 
                     {filteredAndSortedCars.length > 0 ? (
                         filteredAndSortedCars.map(car => (
-                            <CarCard key={car.car_id} car={car} />
+                            <CarCard key={`car-${car.carid}`} car={car} />
                         ))
                     ) : (
                         <div className="no-results">
@@ -213,41 +214,50 @@ function AvailableCars() {
     );
 }
 
-const CarCard = ({ car }) => (
-    <div className="car-card">
-        <div className='car-card-left'>
-            {car.image && (
-                <div className="car-image-container">
-                    <img 
-                        src={car.image.startsWith('/assets/') 
-                            ? process.env.PUBLIC_URL + car.image 
-                            : !car.image.startsWith('/') 
-                                ? process.env.PUBLIC_URL + '/assets/' + car.image 
-                                : process.env.PUBLIC_URL + car.image} 
-                        alt={`${car.model_name} ${car.trim_level} ${car.year}`}
-                        onError={(e) => e.target.style.display = 'none'}
-                    />
+const CarCard = ({ car }) => {
+    if (!car) return null;
+    
+    return (
+        <div className="car-card">
+            <div className='car-card-left'>
+            <Link to={`/availablecars/${car.carid}`} className="car-link">
+                {car.image && (
+                    <div className="car-image-container">
+                        <img 
+                            src={car.image.startsWith('/assets/') 
+                                ? process.env.PUBLIC_URL + car.image 
+                                : !car.image.startsWith('/') 
+                                    ? process.env.PUBLIC_URL + '/assets/' + car.image 
+                                    : process.env.PUBLIC_URL + car.image} 
+                            alt={`${car.model_name} ${car.trim_level} ${car.year}`}
+                            onError={(e) => e.target.style.display = 'none'}
+                        />
+                    </div>
+                )}
+                <div className="car-details">
+                    <div className="car-model">{car.model_name} {car.trim_level} {car.year}</div>
+                    <div className="car-available"><FaCircle /> Доступен к заказу</div>
+                    <div className="car-color">{car.color}</div>
+                    <div className="car-specs">
+                        <span>{car.engine} л</span>
+                        <span>{car.bodywork}</span>
+                        <span>{car.fuel}</span>
+                    </div>
                 </div>
-            )}
-            <div className="car-details">
-                <div className="car-model">{car.model_name} {car.trim_level} {car.year}</div>
-                <div className="car-available"><FaCircle /> Доступен к заказу</div>
-                <div className="car-color">{car.color}</div>
-                <div className="car-specs">
-                    <span>{car.engine} л</span>
-                    <span>{car.bodywork}</span>
-                    <span>{car.fuel}</span>
-                </div>
-            </div>
+            </Link>
         </div>
         <div className="car-card-right">
-            <div className="car-price">{car.price.toLocaleString('ru-RU')} ₽</div>
-            <ButtonCustom className='btn-style-1' onClick={() => console.log('clicking')}>
-                ПОЛУЧИТЬ ПРЕДЛОЖЕНИЕ
-            </ButtonCustom>
+                <div className="car-price">{car.price.toLocaleString('ru-RU')} ₽</div>
+                <ButtonCustom 
+                    className='btn-style-1' 
+                    onClick={() => window.location.href = `/availablecars/${car.carid}`}
+                >
+                    ПОЛУЧИТЬ ПРЕДЛОЖЕНИЕ
+                </ButtonCustom>
+            </div>
         </div>
-    </div>
-);
+    );
+};
 
 const FilterGroup = ({ title, children }) => (
     <div className="filter-group">
