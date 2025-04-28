@@ -20,10 +20,19 @@ export default function Homepage() {
                     Новосибирске. Оцените настоящее японское качество стандартов продажи и обслуживания ООО «Тойота Мотор»!
                 </span>
                 <div className='block-buttons'>
-                    <ButtonCustom className='btn-style-1' onClick={() => console.log('clicking')}>АВТОМОБИЛИ В
-                        НАЛИЧИИ <CgArrowLongRight className='CgArrowLongRight'/></ButtonCustom>
-                    <ButtonCustom className='btn-style-2' onClick={() => console.log('clicking')}>ЗАПИСАТЬСЯ НА
-                        ТО <CgArrowLongRight className='CgArrowLongRight'/></ButtonCustom>
+                    <ButtonCustom 
+                            className='btn-style-1' 
+                            onClick={() => window.location.href = `/availablecars`}
+                        >
+                            АВТОМОБИЛИ В
+                            НАЛИЧИИ <CgArrowLongRight className='CgArrowLongRight'/>
+                    </ButtonCustom>
+                    <ButtonCustom 
+                            className='btn-style-2' 
+                            onClick={() => window.location.href = `/serviceAppointmentForm`}
+                        >
+                            ЗАПИСАТЬСЯ НА ТО <CgArrowLongRight className='CgArrowLongRight'/>
+                    </ButtonCustom>
                 </div>
             </div>
         </main>

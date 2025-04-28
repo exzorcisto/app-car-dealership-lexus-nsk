@@ -1,0 +1,156 @@
+.service-appointment-form {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 50px 20px 70px 20px;
+  font-family: "Jost", serif;
+  color: #494D57;
+}
+
+.service-appointment-form h1 {
+  font-size: 32px;
+  margin-bottom: 10px;
+  text-align: center;
+  font-weight: 400;
+  color: var(--primary-color-text);
+}
+
+.form-description {
+  margin-bottom: 30px;
+  line-height: 1.5;
+  text-align: center;
+}
+
+.form-row {
+  display: flex;
+  gap: 20px;
+}
+
+.form-row .form-field {
+  flex: 1;
+}
+
+.form-field {
+  margin-bottom: 15px;
+}
+
+.form-field input {
+  width: 91%;
+  padding: 18px 15px;
+  border: 1px solid #C7CBD6;
+  border-radius: 6px;
+  font-size: 16px;
+  font-family: "Jost", serif;
+  color: #494D57;
+  background-color: #fff;
+  transition: border-color 0.3s;
+}
+
+.form-field input:focus {
+  outline: none;
+  border-color: var(--primary-secondary-color);
+}
+
+.form-field input::placeholder {
+  color: #494D57;
+  opacity: 0.7;
+}
+
+.form-field-long input {
+    width: 95.5%;
+    padding: 18px 15px;
+    margin-bottom: 20px;
+    border: 1px solid #C7CBD6;
+    border-radius: 6px;
+    font-size: 16px;
+    font-family: "Jost", serif;
+    color: #494D57;
+    background-color: #fff;
+    transition: border-color 0.3s;
+  }
+  
+  .form-field input:focus {
+    outline: none;
+    border-color: var(--primary-secondary-color);
+  }
+  
+  .form-field input::placeholder {
+    color: #494D57;
+    opacity: 0.7;
+  }
+  
+
+.error-message {
+  color: #e2001a;
+  font-size: 14px;
+  margin-top: 5px;
+  display: block;
+}
+
+.error {
+  border-color: #e2001a !important;
+}
+
+.form-notice {
+  font-size: 14px;
+  color: #494D57;
+  margin-bottom: 20px;
+  opacity: 0.7;
+}
+
+.privacy-policy-container {
+  border: 1px solid #C7CBD6;
+  border-radius: 6px;
+  padding: 15px;
+  margin: 25px 0;
+  max-height: 150px;
+  overflow-y: auto;
+}
+
+.privacy-policy-content {
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.privacy-policy-content p {
+  margin-bottom: 10px;
+}
+
+.consent-text {
+  margin: 20px 0;
+  font-size: 15px;
+  line-height: 1.5;
+  padding: 15px;
+  background-color: var(--secondary-color-background);
+  border-radius: 6px;
+}
+
+.marketing-consent {
+  display: flex;
+  align-items: flex-start;
+  margin: 20px 0 30px;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.marketing-consent input {
+  margin-right: 10px;
+  margin-top: 3px;
+}
+
+.submit-button {
+  background-color: var(--primary-secondary-color);
+  color: white;
+  border: none;
+  padding: 15px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 6px;
+  width: 100%;
+  transition: background-color 0.3s;
+  font-family: "Jost", serif;
+  font-weight: 500;
+}
+
+.submit-button:hover {
+  background-color: var(--primary-secondary-color-hover);
+}
