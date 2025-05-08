@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useMemo } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import './AvailableCars.css';
 import NavBar from '../../components/UI/NavBar/NavBar';
 import axios from 'axios';
@@ -215,6 +215,9 @@ function AvailableCars() {
 }
 
 const CarCard = ({ car }) => {
+
+    const navigate  = useNavigate()
+
     if (!car) return null;
     
     return (
@@ -250,7 +253,7 @@ const CarCard = ({ car }) => {
                 <div className="car-price">{car.price.toLocaleString('ru-RU')} ₽</div>
                 <ButtonCustom 
                     className='btn-style-1' 
-                    onClick={() => window.location.href = `/availablecars/${car.carid}`}
+                    onClick={() => navigate(`/availablecars/${car.carid}`)}
                 >
                     ПОЛУЧИТЬ ПРЕДЛОЖЕНИЕ
                 </ButtonCustom>

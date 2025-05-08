@@ -1,12 +1,24 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import ButtonCustom from '../../components/UI/ButtonCustom/ButtonCustom';
 import './CarDetails.css';
+import axios from 'axios';
+const URL = 'http://localhost:8000'
+
 
 const CarDetails = ({ cars }) => {
     const { id } = useParams();
     const navigate = useNavigate();
-    const car = cars?.find(c => c.carid === parseInt(id));
+const [car, setCarInfo] = useState({})
+
+useEffect(()=>{
+   
+            axios.get(`${URL}/cars/${id}`).then(data=>{
+setCarInfo(data.data)
+            }).catch(error=>console.log(error));
+       
+    
+},[id])
 
     if (!car) {
         return (
@@ -19,8 +31,7 @@ const CarDetails = ({ cars }) => {
         );
     }
 
-    const exteriorFeatures = car.description_1 ? car.description_1.split('\n').filter(item => item.trim() !== '') : [];
-    const comfortFeatures = car.description_2 ? car.description_2.split('\n').filter(item => item.trim() !== '') : [];
+
 
     return (
         <div className="car-details-container">
@@ -32,7 +43,7 @@ const CarDetails = ({ cars }) => {
                 </div>
                 
                 <div className="price-action-container">
-                    <div className="price-value">{car.price.toLocaleString('ru-RU')} ₽</div>
+                    <div className="price-value">{car.price?.toLocaleString('ru-RU')} ₽</div>
                     <ButtonCustom className="offer-btn">
                         ПОЛУЧИТЬ ПРЕДЛОЖЕНИЕ
                     </ButtonCustom>
@@ -91,17 +102,16 @@ const CarDetails = ({ cars }) => {
                     <div className="feature-group">
                         <h3>ЭКСТЕРЬЕР</h3>
                         <ul className="features-list">
-                            {exteriorFeatures.map((feature, index) => (
-                                <li key={`exterior-${index}`}>{feature}</li>
-                            ))}
+                            {car.discription1}
                         </ul>
                     </div>
                     <div className="feature-group">
                         <h3>КОМФОРТ</h3>
                         <ul className="features-list">
-                            {comfortFeatures.map((feature, index) => (
+                            {/* {comfortFeatures.map((feature, index) => (
                                 <li key={`comfort-${index}`}>{feature}</li>
-                            ))}
+                            ))} */}
+                              {car.discription2}
                         </ul>
                     </div>
                 </div>
