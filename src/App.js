@@ -16,6 +16,7 @@ import CarList from './admin/cars/CarList/CarList';
 import AddCar from './admin/cars/AddCar/AddCar';
 import EmployeeList from './admin/employees/EmployeeList/EmployeeList';
 import ServiceAppointmentForm from './pages/ServiceAppointmentForm/ServiceAppointmentForm';
+import PostsPage from './pages/PostsPage/PostsPage';
 import './index.css';
 
 function App() {
@@ -52,6 +53,7 @@ function App() {
           <Route path="lexusworld" element={<LexusWorld />} />
           <Route path="contacts" element={<Contacts />} />
           <Route path="serviceAppointmentForm" element={<ServiceAppointmentForm />} />
+          <Route path="/posts" element={<PostsPage />} />
         </Route>
 
         {/* Admin Routes */}
